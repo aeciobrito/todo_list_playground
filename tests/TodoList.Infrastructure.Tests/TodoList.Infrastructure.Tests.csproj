@@ -27,4 +27,9 @@
     <ProjectReference Include="..\TodoList.TestSupport\TodoList.TestSupport.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Collections/" />
+    <Folder Include="Services/" />
+  </ItemGroup>
+
 </Project>
