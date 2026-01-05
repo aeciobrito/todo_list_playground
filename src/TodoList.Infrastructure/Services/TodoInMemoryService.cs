@@ -11,6 +11,7 @@ public class TodoInMemoryService : ITodoService
     {
         if(string.IsNullOrWhiteSpace(item.Title))
             throw new ArgumentNullException("O título da tarefa não pode ser vazio.");
+        // ArgumentException
 
         item.Id = Guid.NewGuid();
         item.CreatedAt = DateTime.Now;
