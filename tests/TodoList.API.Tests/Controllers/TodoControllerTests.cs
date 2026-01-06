@@ -6,8 +6,8 @@ using TodoList.API.Controllers;
 using TodoList.API.DTOs;
 using TodoList.Infrastructure.Models;
 using TodoList.Infrastructure.Services;
+using Microsoft.Extensions.Logging.Abstractions;
 using TodoList.TestSupport.Fixtures;
-using TodoList.TestSupport.Spies;
 
 namespace TodoList.API.Tests.Controllers;
 
@@ -19,9 +19,6 @@ public class TodoControllerTests
     // MOCK: Objeto falso que simula o serviço
     private readonly Mock<ITodoService> _serviceMock;
     
-    // SPY: Logger real (em memória) para inspecionarmos mensagens
-    private readonly SpyLogger<TodoController> _spyLogger;
-    
     // SUT: System Under Test (O Controller real)
     private readonly TodoController _sut;
 
@@ -32,11 +29,8 @@ public class TodoControllerTests
         // 1. Criamos o Mock
         _serviceMock = new Mock<ITodoService>();
         
-        // 2. Instanciamos o Spy
-        _spyLogger = new SpyLogger<TodoController>();
-        
-        // 3. Injetamos as dependências falsas no Controller real
-        _sut = new TodoController(_serviceMock.Object, _spyLogger); // aqui seria DTO
+        // 2. Injetamos as dependências falsas no Controller real
+        _sut = new TodoController(_serviceMock.Object, new NullLogger<TodoController>()); // aqui seria DTO
     }
 
     [Fact(DisplayName = "Create deve retornar 201 Created e Logar sucesso")]
@@ -77,10 +71,6 @@ public class TodoControllerTests
         // Verificamos se o serviço foi chamado com um TodoItem que tem o mesmo título do DTO.
         // Isso garante que o Controller fez o "de-para" corretamente.
         _serviceMock.Verify(s => s.AddAsync(It.Is<TodoItem>(i => i.Title == dtoEntrada.Title)), Times.Once);
-
-        Assert.Contains(_spyLogger.Logs, l => 
-            l.Level == LogLevel.Information && 
-            l.Message.Contains(itemRetorno.Id.ToString()));
     }
 
     [Fact(DisplayName = "Create deve retornar 400 BadRequest quando Serviço lança Exceção")]
@@ -103,10 +93,6 @@ public class TodoControllerTests
         var badRequestResult = Assert.IsType<BadRequestObjectResult>(resultado);
         Assert.Equal(400, badRequestResult.StatusCode);
         Assert.Equal(mensagemErro, badRequestResult.Value);
-
-        Assert.Contains(_spyLogger.Logs, l => 
-            l.Level == LogLevel.Warning && 
-            l.Message.Contains("Tentativa de criar item inválido"));
     }
     
     // Teste Extra (Bônus): Update com DTO

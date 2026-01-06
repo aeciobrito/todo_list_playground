@@ -58,7 +58,6 @@ Todo teste deve ser legível como uma história com três atos:
 Para evitar duplicação de código (DRY), criamos um projeto dedicado a utilitários de teste.
 
 * **Fixtures:** Configurações globais reutilizáveis (ex: `TodoInMemoryFixture`).
-* **Spies:** Implementações manuais para capturar efeitos colaterais difíceis de "mockar", como Logs.
 
 ---
 
@@ -72,15 +71,7 @@ No xUnit, testes em classes diferentes rodam em paralelo e isolados. Quando prec
 * **Uso:** A classe de teste recebe `[Collection("InfrastructureCollection")]` e injeta a `TodoInMemoryFixture` no construtor.
 * *Benefício:* Garante que o ambiente seja preparado uma única vez (ou controlado) para um grupo de testes.
 
-### 4.2 Spies (Espiões) vs. Mocks
-
-Embora usemos o **Moq** para serviços, utilizamos um **Spy** para o `ILogger`.
-
-* **O Problema:** Mockar `ILogger` com Moq é verboso porque a maioria dos métodos de log são *extension methods* estáticos.
-* **A Solução (`SpyLogger`):** Uma classe real em `TestSupport` que implementa `ILogger` mas apenas guarda as mensagens em uma `List<LogEntry>`.
-* **Assert:** Nos testes, verificamos se a lista contém a mensagem esperada.
-
-### 4.3 Mocks e Verificação de Comportamento
+### 4.2 Mocks e Verificação de Comportamento
 
 Nos testes da API (`TodoList.API.Tests`), não queremos testar o serviço (já testado na infra), mas sim se o Controller **conversa** corretamente com ele.
 
@@ -115,7 +106,6 @@ Focam em **Comportamento e Contratos HTTP**.
 * **Sucesso (201 Created):**
 * Configura o Mock para retornar sucesso.
 * Verifica se o Status Code é 201.
-* Verifica se o `SpyLogger` registrou a operação.
 
 
 * **Erro de Negócio (400 Bad Request):**
