@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard IoT - Home</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Container principal que agrupa todo o conteúdo do dashboard. -->
+    <div class="dashboard-container">
+
+        <!-- Título da seção "Sala de Estar". O ícone vem do Font Awesome. -->
+        <h2 class="section-title"><i class="fas fa-couch"></i> Sala de Estar</h2>
+        
+        <!-- Agrupador de cartões para esta seção. -->
+        <div class="section-group">
+            
+            <!-- 
+                Cartão de Clima (Temperatura e Umidade).
+                O 'onclick' redireciona para a página de detalhes.
+            -->
+            <div class="card" onclick="window.location.href='pages/sensor-dht.html'">
+                <div class="card-header">
+                    <i class="fas fa-thermometer-half fa-2x" style="color: #ff9800;"></i>
+                    <h3>Clima Ambiente</h3>
+                </div>
+
+                <!-- Seção para exibir os dados dos sensores. -->
+                <div class="sensor-data">
+                    <div class="data-item">
+                        <!-- O 'id' é usado pelo JavaScript para atualizar o valor. -->
+                        <span id="temp-display" class="valor-destaque">--</span>
+                        <span class="unit">Temperatura (°C)</span>
+                    </div>
+                    <div class="data-item">
+                        <span id="umid-display" class="valor-destaque">--</span>
+                        <span class="unit">Umidade (%)</span>
+                    </div>
+                </div>
+
+                <!-- Informação de status da conexão. -->
+                <div class="status-info">
+                    <i class="fas fa-wifi"></i> Atualizado agora
+                </div>
+            </div>
+
+            <!-- 
+                Cartão da Luz. 
+                (Este é um exemplo de como um novo módulo pode ser adicionado).
+            -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb fa-2x" style="color: #f1c40f;"></i>
+                    <h3>Luz Principal</h3>
+                </div>
+                <div style="text-align: center;">
+                    <span class="valor-destaque" style="color: #fff;">ON</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Título da seção "Cozinha". -->
+        <h2 class="section-title"><i class="fas fa-utensils"></i> Cozinha</h2>
+        
+        <!-- Cartão de exemplo para adicionar novos módulos. -->
+        <div class="section-group">
+            <div class="card" style="opacity: 0.5;">
+                <div class="card-header">
+                    <i class="fas fa-plus-circle fa-2x"></i>
+                    <h3>Adicionar Módulo</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Carrega o arquivo JavaScript principal da aplicação. -->
+    <script src="js/app.js"></script>
+</body>
+</html>

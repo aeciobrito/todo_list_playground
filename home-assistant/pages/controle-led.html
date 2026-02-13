@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes - Clima</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- 
+        O container principal ajuda a centralizar e limitar a largura do conteúdo 
+        para melhor legibilidade em telas grandes. 
+    -->
+    <div class="container">
+        <!-- O cabeçalho da página, com um botão de "voltar" e o título. -->
+        <header class="header">
+            <a href="../index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+            <h2>Monitoramento</h2>
+        </header>
+
+        <!-- 
+            Esta é a área de conteúdo principal.
+            Classes como 'text-center' e 'mt-5' são utilitárias (do style.css) 
+            para agilizar a estilização.
+        -->
+        <div class="text-center mt-5">
+
+            <!-- Ícone decorativo para a página. -->
+            <i class="fas fa-cloud fa-4x text-secondary mb-2"></i>
+
+            <!-- 
+                Este é o cartão de detalhes. Ele usa a classe 'card' base e 
+                modificadores como 'card-details' e 'mx-auto'.
+            -->
+            <div class="card card-details mx-auto">
+                <div class="card-header">
+                    <h3>Controle da Lampada LED</h3>
+                </div>
+
+                <!-- Conteúdo do cartão para o valor de temperatura. -->
+                <div class="card-content">
+                    <div>
+                        <form action="/ligar" method="GET">
+                            <button type="submit">DESATIVAR LED</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <div>
+                        <form action="/desligar" method="GET">
+                            <button type="submit">ATIVAR LED</button>
+                        </form>
+                        <!---->
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <div>
+                        <form action="/piscar" method="GET">
+                            <button type="submit">PISCAR</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Uma linha divisória para separar os dados. -->
+                <hr class="divider">
+
+                <!-- Conteúdo do cartão para o valor de umidade. -->
+                <div class="card-content">
+
+                </div>
+            </div>
+
+            <!-- Um texto de exemplo para futuras implementações, como gráficos. -->
+            <p class="mt-3 text-secondary">
+                Histórico das últimas 24h (Placeholder para o futuro)
+            </p>
+
+        </div>
+    </div>
+
+    <!-- 
+        Carrega o JavaScript no final do body.
+        Isso garante que o HTML seja totalmente carregado antes do script ser executado,
+        evitando erros de "elemento não encontrado".
+    -->
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+:root {
+            --primary-bg: #1c1c1e;
+            --secondary-bg: #2c2c2e;
+            --card-bg: #2c2c2e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaa;
+            --accent-blue: #4da6ff;
+        }
+        
+/* --- CSS GLOBAL (Fornecido e Adaptado) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+
+        .btn-back {
+            background: none;
+            border: 1px solid #444;
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #3a3a3c;
+        }
+
+        .card-content {
+            padding: 10px 0;
+        }
+
+        .value-big {
+            display: block;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        h2.section-title {
+            width: 100%;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 300;
+            color: #fff;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: #3a3a3c;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: normal;
+        }
+        
+        .sensor-data {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .data-item {
+            text-align: center;
+        }
+
+        .valor-destaque {
+            font-size: 1.8em;
+            font-weight: bolder;
+            color: var(--accent-blue);
+            display: block;
+        }
+
+        .unit {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .status-info {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        /* --- Utilities --- */
+        .text-center { text-align: center; }
+        .mt-5 { margin-top: 50px !important; }
+        .mb-2 { margin-bottom: 20px !important; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .d-block { display: block; }
+        .w-100 { width: 100%; }
+        hr.divider { border: none; border-top: 1px solid #444; margin: 20px 0; }
+        .text-accent { color: var(--accent-blue); }
+        .text-secondary { color: var(--text-secondary); }
+        .font-size-4 { font-size: 4rem !important; }
+        .font-size-3 { font-size: 3rem !important; }
+        .cursor-default { cursor: default !important; }
+
+        .card.card-details {
+            max-width: 400px;
+            cursor: default;
+        }
+
+        /* Responsividade para telas muito pequenas */
+        @media (max-width: 480px) {
+            .card {
+                max-width: 100%; /* Ocupa 100% da tela no celular */
+            }
+        }
